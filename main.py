@@ -100,7 +100,7 @@ def login():
         if check_password_hash(user['password_hash'], password):
             # Create an access token with a short expiration time
             access_token_payload = {
-                'exp': datetime.utcnow() + timedelta(minutes=15),
+                'exp': datetime.utcnow() + timedelta(minutes=1),
                 'iat': datetime.utcnow(),
                 'sub': email,
                 'role': user['role']
@@ -147,7 +147,7 @@ def refresh():
 
         # Create a new access token
         new_access_token_payload = {
-            'exp': datetime.utcnow() + timedelta(minutes=15),
+            'exp': datetime.utcnow() + timedelta(minutes=1),
             'iat': datetime.utcnow(),
             'sub': email,
             'role': user['role']
