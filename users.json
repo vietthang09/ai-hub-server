@@ -1,0 +1,42 @@
+{
+  "thuthao123@gmail.com": {
+    "password_hash": "scrypt:32768:8:1$kT9JJ43f92q0AQ5K$ed2d51a4ad2882089843cec059c2e69a1ec21419e2648741d5077dd2a13511ecce9f673075043067d353d2fae8810c38fdeeb4c06fa1d2771e6d3a91a9cb4b74",
+    "role": "admin"
+  },
+  "thuthaophan0905@gmail.com": {
+    "password_hash": "scrypt:32768:8:1$YNgM8tzfQVfdRSzX$621f1e4ad6dfcfdcd5c55790abe5b8e0f5468d98f2614d1e6ac8e06c1d8cd503346a9e5b128250c0c90e9f5e2f1fb8df2d73376a930a334dbb8becd5c480bc95",
+    "role": "admin"
+  },
+  "ww@a.s": {
+    "password_hash": "scrypt:32768:8:1$QUKZn4mHSXVHVomB$a90acd7b31fdccdf260a7a1bdebb62f23d340bf0b41d103101835aac614ea32b1d6c34f93a1b153b2a94feaada8165facf6113afece4293b44c7390c26f087b1",
+    "role": "admin"
+  },
+  "aaa@d.c": {
+    "password_hash": "scrypt:32768:8:1$aKoSr3KRVL7zHsCR$0d78e59dd807659a36f96471c484de48a2913dfa0917561f515994b9b5b34c291784c984cb48a609fb1a9248a411a6741c686d337df329d1ebd7cbb2a8a295e6",
+    "role": "admin"
+  },
+  "admin@example.com": {
+    "password_hash": "scrypt:32768:8:1$2Rvt3BNgeZ40zJuX$4b24f7e50ba4ba3ef45947f81781c5915e0ed9e23ebac71826e81effa494f6895b8011cb19cac520cd97de25ab840873612dbd95757dc120d4141fc82b694f0d",
+    "role": "admin"
+  },
+  "thuthao1123@gmail.com": {
+    "password_hash": "scrypt:32768:8:1$7NNNBm6zr6KrdvaG$6aaddbeade238215d0d3c465974af7141ce2794dd1d563409a0313dc1fc7aaa4e78168c69183cff98d4cb5eec03f03c09d45066f89f36e3de9cf0ca9b8c8f408",
+    "role": "admin"
+  },
+  "test@a.b": {
+    "password_hash": "scrypt:32768:8:1$45pqLPdq3RwIMNne$e5fce0887fc1d71fa47f6f5a74ea820267585343d3cd0479d1892f70a144523b3c03d5560df72a7bb9a2cb1432e79a11743e9a64c7e0d72dedbb67a7f5838fe3",
+    "role": "admin"
+  },
+  "test1.@a.n": {
+    "password_hash": "scrypt:32768:8:1$mAWGjb6WNxtnJ7hz$9b20c6c26b16ec2b6e31dec11fb6c781c0b9f5c8c03fc056b2e4218366460c4b9e773a1320a7893ba041fe25400f24c2269fb16ed09226ae731b33708b04696e",
+    "role": "admin"
+  },
+  "thaoo@b.c": {
+    "password_hash": "scrypt:32768:8:1$2nGC1mFZiA1b9B1P$13a3d6d1037fb12ef73b39e35e1f1bf62bbc3df3da6aa357b1ed05edd1d47a7794a70d98476e41694a04ee1b7a77f68e2be786f94884687c5faedd4c2439829c",
+    "role": "admin"
+  },
+  "tech@travelthru.com": {
+    "password_hash": "scrypt:32768:8:1$Ptj0pKExQ1vZi8Gb$596bbbceaf1197b5f3b4f862ca34d017375061969aaaa0ac64c8e779de1fdbfb40d846b80b7a85c32682287319ebfa850b52d510dc9b351069a180e7021fc7fa",
+    "role": "admin"
+  }
+}

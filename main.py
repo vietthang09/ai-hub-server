@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+import json
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
 from datetime import datetime, timedelta
@@ -9,10 +11,26 @@ from functools import wraps
 app = Flask(__name__)
 
 # Enable CORS for the frontend running on http://localhost:5173
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5173", "http://localhost:3000"])
 
-# In a real application, this should be a database. We're using a dictionary for this example.
-users = {}
+
+# Path to the JSON file for storing users
+USERS_FILE = os.path.join(os.path.dirname(__file__), 'users.json')
+
+def load_users():
+    if not os.path.exists(USERS_FILE):
+        return {}
+    with open(USERS_FILE, 'r', encoding='utf-8') as f:
+        try:
+            return json.load(f)
+        except Exception:
+            return {}
+
+def save_users(users):
+    with open(USERS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(users, f, indent=2)
+
+users = load_users()
 
 # A strong secret key is crucial for JWT security. In production, store this in an environment variable.
 SECRET_KEY = "a_strong_and_secret_key"
@@ -77,18 +95,18 @@ def register():
         email = data['email']
         password = data['password']
 
+
         if email in users:
             return jsonify({"error": "User with this email already exists"}), 409
 
         # Hash the password for secure storage
         hashed_password = generate_password_hash(password)
 
-        # In a real application, this role would be assigned based on a business rule
         users[email] = {
             "password_hash": hashed_password,
-            "role": "admin" # Changed default role to 'user' for a more realistic scenario
+            "role": "admin"
         }
-
+        save_users(users)
         return jsonify({"message": "User registered successfully", "role": "user"}), 201
 
     except KeyError:
@@ -226,7 +244,7 @@ def create_user(user_data):
             "password_hash": hashed_password,
             "role": role
         }
-
+        save_users(users)
         return jsonify({"message": "User created successfully", "email": email, "role": role}), 201
 
     except KeyError:
@@ -270,6 +288,7 @@ def update_user_role(user_data, email):
 
         # Update the user's role
         users[email]['role'] = new_role
+        save_users(users)
         return jsonify({"message": f"Role for user {email} updated to {new_role}"}), 200
     except KeyError:
         return jsonify({"error": "Missing 'role' in request"}), 400
@@ -291,6 +310,7 @@ def delete_user(user_data, email):
             return jsonify({"error": "Cannot delete your own account"}), 403
 
         del users[email]
+        save_users(users)
         return jsonify({"message": f"User {email} deleted successfully"}), 200
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
@@ -302,5 +322,10 @@ if __name__ == '__main__':
             "password_hash": generate_password_hash("adminpassword"),
             "role": "admin"
         }
-    
+        save_users(users)
+
+    # Register Gemini blueprint
+    from ai import gemini_bp
+    app.register_blueprint(gemini_bp)
+
     app.run(host='0.0.0.0', port=5000, debug=True)
