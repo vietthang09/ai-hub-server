@@ -9,6 +9,7 @@ load_dotenv()
 
 # Import routes
 from src.routes.reviews import reviews_bp
+from src.routes.auth import auth_bp
 
 def create_app():
     app = Flask(__name__)
@@ -18,6 +19,7 @@ def create_app():
     logging.basicConfig(level=logging.INFO)
     
     # Register blueprints
+    app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(reviews_bp, url_prefix='/api/reviews')
     
     @app.route('/health')
